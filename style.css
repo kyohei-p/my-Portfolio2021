@@ -1,0 +1,1900 @@
+@charset "utf-8";
+
+/*================================================================================
+    ローディング画面（#roadeing）
+================================================================================*/
+
+/*背景画面*/
+#splash{
+    position: fixed;
+    z-index: 10000;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    text-align: center;
+    color: #fff;
+}
+
+/*バー中央配置*/
+#splash_text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+
+
+/*================================================================================
+	コンテンツ全体（#container）
+================================================================================*/
+
+#top-container{
+    width: 100%;
+    height: 100vh;
+    margin-right: auto;
+    margin-left: auto;
+    background-image: url(img/江の島1.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:100% 100%;
+}
+
+/*================================================================================
+	ヘッダ（#header）
+================================================================================*/
+
+
+#header{
+    display: flex;
+    width: 100%;
+}
+
+.header-inner{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: calc(100vw - 30px);
+    height: 100%;
+    margin: 0 auto;
+}
+
+.header-sitetitle{
+    margin-left: 20px;
+    padding-top: 20px;
+    height: 60px;
+}
+
+@media (max-width:768px) {
+    .header-sitetitle{
+        font-size: 20px;
+        margin-top: 20px;
+    }
+}
+
+
+#header h1{
+    position: relative;
+    margin-left: 20px;
+    padding-top: 20px;
+    height: 60px;
+
+}
+
+#header h1 a{
+    text-decoration: none;
+}
+
+@media (min-width:768px) {
+    #header-nav .nav-item0 a{
+        color:white;
+    }
+}
+
+
+#header nav{
+    margin-top:50px;
+    margin-right: 50px;
+    font-size: 20px;
+}
+
+#header nav ul{
+    list-style: none;
+    margin-top: 0px;
+    padding: 0;
+}
+
+@media (min-width:768px) {
+
+    #header-nav li {
+        display: inline-block;
+        list-style: none;
+        margin-left: 30px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        height: 30px;
+    }
+}
+
+/*ヘッダメニューアニメーション*/
+@media (min-width:768px) {
+
+    #header-nav .nav-item0 a:hover{
+    color: black;
+    text-decoration: underline;
+}
+}
+
+
+/*下線アニメーション（メニュー）*/
+/*@media (min-width:768px) {
+
+    .nav-item0 a{
+       position:relative;
+       display: inline-block;
+       text-decoration: none;
+   }
+/*
+   .nav-item0 a::after {
+       position: absolute;
+       bottom: 0px;
+       left: 0;
+       content: '';
+       width: 100%;
+       height: 1px;
+       background: white;
+       transform: scale(0, 1);
+       transform-origin: center top;
+       transition: transform .3s;
+     }
+   .nav-item0 a:hover::after {
+       transform: scale(1, 1);
+     }
+     */
+
+
+/*下線アニメーション（メニュー）*/
+@media (max-width:768px) {
+
+ .nav-item0 a{
+    position:relative;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.nav-item0 a::after {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 1px;
+    background: black;
+    transform: scale(0, 1);
+    transform-origin: center top;
+    transition: transform .3s;
+  }
+.nav-item0 a:hover::after {
+    transform: scale(1, 1);
+  }
+}
+
+/*ハンバーガーメニュー*/
+@media (max-width:768px) {
+
+
+/*三本線が奥行きをもって回転して×に*/
+/*ボタン外側*/
+/*========= ナビゲーションのためのCSS ===============*/
+
+#header-nav{
+    /*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+    position:fixed;
+    z-index: 999;
+    /*ナビのスタート位置と形状*/
+	top:-120%;
+    left:0;
+	width:100%;
+    height: 100vh;/*ナビの高さ*/
+	background:white;
+    opacity: 0.9;
+    /*動き*/
+	transition: all 0.6s;
+
+}
+
+/*アクティブクラスがついたら位置を0に*/
+#header-nav.panelactive{
+    top: 0;
+}
+
+/*ナビゲーションの縦スクロール*/
+#header-nav.panelactive #header-nav-list{
+    /*ナビの数が増えた場合縦スクロール*/
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    height: 100vh;/*表示する高さ*/
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/*ナビゲーション*/
+#header-nav ul {
+    /*ナビゲーション天地中央揃え*/
+    position: absolute;
+    z-index: 999;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+/*リストのレイアウト設定*/
+
+#header-nav ul{
+	list-style: none;
+    text-align: center;
+}
+
+#header-nav ul a{
+	color:black;
+	text-decoration: none;
+	padding:10px;
+	display: block;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	font-weight: bold;
+}
+
+#header-nav ul a:hover{
+	color:lightseagreen;
+}
+
+/*========= ボタンのためのCSS ===============*/
+.openbtn1{
+	position:fixed;
+    z-index: 9999;/*ボタンを最前面に*/
+	top:10px;
+	right: 10px;
+	cursor: pointer;
+    width: 50px;
+    height:50px;
+    margin-top: 30px;
+    margin-right: 30px;
+    background:lightseagreen;
+    border-radius: 5px;
+}
+
+/*×に変化*/
+.openbtn1 span{
+    display: inline-block;
+    transition: all .4s;
+    position: absolute;
+    left: 14px;
+    height: 3px;
+    border-radius: 2px;
+	background-color: white;
+  	width: 45%;
+  }
+
+.openbtn1 span:nth-of-type(1) {
+	top:15px;
+}
+
+.openbtn1 span:nth-of-type(2) {
+	top:23px;
+}
+
+.openbtn1 span:nth-of-type(3) {
+	top:31px;
+}
+
+.openbtn1.active span:nth-of-type(1) {
+    top: 18px;
+    left: 18px;
+    transform: translateY(6px) rotate(-45deg);
+    width: 30%;
+}
+
+.openbtn1.active span:nth-of-type(2) {
+	opacity: 0;
+}
+
+.openbtn1.active span:nth-of-type(3){
+    top: 30px;
+    left: 18px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 30%;
+}
+
+}
+
+/*================================================================================
+	メインコンテンツ部（#main）
+================================================================================*/
+
+.hero{
+    text-align: center;
+}
+
+.hero h1{
+    position: relative;
+    top:100px;
+    margin: 0;
+    font-family: cursive;
+    cursor:grab;
+      }
+
+
+
+.hero h1:hover{
+    animation: fuwafuwa 2s infinite ease-in-out;
+}
+
+
+    @keyframes fuwafuwa{
+        0% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(0, -20px);
+        }
+        100% {
+          transform: translate(0, 0);
+        }
+    }
+
+
+
+.hero p{
+    position: relative;
+    top: 100px;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.hero p span{
+    text-decoration: underline;
+}
+
+
+.slide-in_inner {
+    display: inline-block;
+
+  }
+
+  /* 上下のアニメーション*/
+  .downAnime{
+      opacity: 0;/* 事前に透過0 にして消しておく*/
+  }
+
+  .slideAnimeDownUp {
+      animation-name:slideTextY100;
+      animation-duration:3s;
+      animation-fill-mode:forwards;
+      opacity: 0;
+      color: white;
+  }
+
+  @keyframes slideTextY100 {
+      from {
+          transform: translateY(100%);/* 要素を上の枠外に移動*/
+          opacity: 0;
+      }
+      to {
+          transform: translateY(0);/* 要素を元の位置に移動*/
+          opacity: 1;
+      }
+  }
+
+  .slideAnimeUpDown {
+      animation-name:slideTextY-100;
+      animation-duration:3s;
+      animation-fill-mode:forwards;
+      opacity: 0;
+      color: white;
+  }
+
+  @keyframes slideTextY-100 {
+      from {
+          transform: translateY(-100%);/* 要素を下の枠外に移動*/
+          opacity: 0;
+      }
+      to {
+          transform: translateY(0);/* 要素を元の位置に移動*/
+          opacity: 1;
+      }
+  }
+
+/*  試作
+  .button {
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    background-color: #333;
+    border: 2px solid #333;
+    color: #fff;
+    text-decoration: none;
+    width: 200px;
+    line-height: 50px;
+    text-align: center;
+    outline: none;
+  }
+  .button:hover {
+    background-color: #fff;
+    border-color: #59b1eb;
+    color: #59b1eb;
+  }
+
+
+
+  .button::before,
+  .button::after {
+    position: absolute;
+    z-index: -1;
+    display: block;
+
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: #333;
+      transition: all .3s;
+  }
+  .button::before {
+
+    top: 0;
+  }
+  .button::after {
+
+    bottom: 0;
+  }
+  .button:hover::before,
+  .button:hover::after {
+
+    height: 0;
+    background-color: #59b1eb;
+  }//
+
+/*================================================================================
+	フッター部（#footer）
+================================================================================*/
+
+#top-footer {
+margin-right: 30px;
+margin-bottom: 0;
+position: absolute;/*←絶対位置*/
+bottom: 0; /*下に固定*/
+right: 0;
+font-size: 12px;
+}
+
+#top-footer p{
+    display: flex;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+
+/*================================================================================
+	aboutページ全体（#container）
+================================================================================*/
+#container{
+    width: 100%;
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
+/*================================================================================
+	aboutページヘッダ部（#header）
+================================================================================*/
+
+#header{
+    display: flex;
+    width: 100%;
+}
+
+.header-inner{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: calc(100vw - 30px);
+    height: 100%;
+    margin: 0 auto;
+}
+
+#header h1{
+    margin-left: 20px;
+    padding-top: 20px;
+    height: 60px;
+}
+
+#header h1 a{
+text-decoration: none;
+color: black;
+}
+
+
+#header nav{
+    margin-top:20px;
+    margin-right: 50px;
+    font-size: 20px;
+}
+
+#header nav{
+    margin-top:50px;
+    margin-right: 50px;
+    font-size: 20px;
+}
+
+#header nav ul{
+    list-style: none;
+    margin-top: 0px;
+    padding: 0;
+}
+
+
+@media (min-width:768px) {
+    #header-nav li {
+        display: inline-block;
+        list-style: none;
+        margin-left: 30px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        height: 30px;
+    }
+}
+
+
+/*ヘッダメニューアニメーション*/
+@media (min-width:768px) {
+
+#header-nav a:hover{
+    color: lightseagreen;
+    text-decoration: underline;
+}
+}
+
+
+/*下線アニメーション（メニュー）　レスポンシブ*/
+/*
+@media (max-width:768px) {
+
+    .nav-item a{
+       position:relative;
+       display: inline-block;
+       text-decoration: none;
+   }
+
+   .nav-item a::after {
+       position: absolute;
+       bottom: 10px;
+       left: 0;
+       content: '';
+       width: 100%;
+       height: 1px;
+       background: black;
+       transform: scale(0, 1);
+       transform-origin: center top;
+       transition: transform .3s;
+     }
+   .nav-item a:hover::after {
+       transform: scale(1, 1);
+     }
+   }
+*/
+
+/*ハンバーガーメニュー*/
+@media (max-width:768px) {
+
+
+    /*三本線が奥行きをもって回転して×に*/
+    /*ボタン外側*/
+    /*========= ナビゲーションのためのCSS ===============*/
+
+    #header-nav{
+        /*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+        position:fixed;
+        z-index: 999;
+        /*ナビのスタート位置と形状*/
+        top:-120%;
+        left:0;
+        width:100%;
+        height: 100vh;/*ナビの高さ*/
+        background:white;
+        opacity: 0.9;
+        /*動き*/
+        transition: all 0.6s;
+
+    }
+
+    /*アクティブクラスがついたら位置を0に*/
+    #header-nav.panelactive{
+        top: 0;
+    }
+
+    /*ナビゲーションの縦スクロール*/
+    #header-nav.panelactive #header-nav-list{
+        /*ナビの数が増えた場合縦スクロール*/
+        position: fixed;
+        z-index: 999;
+        width: 100%;
+        height: auto;/*表示する高さ*/
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /*ナビゲーション*/
+    #header-nav ul {
+        /*ナビゲーション天地中央揃え*/
+        position: absolute;
+        z-index: 999;
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+    }
+
+    /*リストのレイアウト設定*/
+
+    #header-nav ul{
+        list-style: none;
+        text-align: center;
+    }
+
+    #header-nav ul a{
+        color:black;
+        text-decoration: none;
+        padding:10px;
+        display: block;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: bold;
+    }
+
+    #header-nav ul a:hover{
+        color:lightseagreen;
+    }
+
+
+    /*========= ボタンのためのCSS ===============*/
+    .openbtn1{
+        position:fixed;
+        z-index: 9999;/*ボタンを最前面に*/
+        top:10px;
+        right: 10px;
+        cursor: pointer;
+        width: 50px;
+        height:50px;
+        margin-top: 30px;
+        margin-right: 30px;
+        background:lightseagreen;
+        border-radius: 5px;
+    }
+
+    /*×に変化*/
+    .openbtn1 span{
+        display: inline-block;
+        transition: all .4s;
+        position: absolute;
+        left: 14px;
+        height: 3px;
+        border-radius: 2px;
+        background-color: white;
+          width: 45%;
+      }
+
+    .openbtn1 span:nth-of-type(1) {
+        top:15px;
+    }
+
+    .openbtn1 span:nth-of-type(2) {
+        top:23px;
+    }
+
+    .openbtn1 span:nth-of-type(3) {
+        top:31px;
+    }
+
+    .openbtn1.active span:nth-of-type(1) {
+        top: 18px;
+        left: 18px;
+        transform: translateY(6px) rotate(-45deg);
+        width: 30%;
+    }
+
+    .openbtn1.active span:nth-of-type(2) {
+        opacity: 0;
+    }
+
+    .openbtn1.active span:nth-of-type(3){
+        top: 30px;
+        left: 18px;
+        transform: translateY(-6px) rotate(45deg);
+        width: 30%;
+    }
+
+    }
+
+
+/*================================================================================
+	aboutページメインコンテンツ部（#main）
+================================================================================*/
+
+/*profile*/
+
+#about-container{
+width: 100%;
+height: auto;
+margin-right: auto;
+margin-left: auto;
+}
+
+#about-main{
+    width: 100%;
+    height: auto;
+    padding-top: 100px;
+    background-color: #fff;
+}
+
+.profiles{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    color: black;
+}
+
+@media (max-width:768px) {
+    .profiles{
+    display: block;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+}
+
+.profile-img{
+    text-align: center;
+}
+
+.profile-img img{
+    margin: 100px;
+    border-radius: 50% 50%;
+}
+
+.profile .name{
+    line-height: 1.5;
+}
+
+.profile .name .roma-ji{
+    margin-bottom: 0;
+    font-size: 20px;
+}
+
+.profile .name .kanji{
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 30px;
+}
+
+.profile .name .birthday{
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.main-text{
+    line-height: 1.5;
+    font-size: 16px;
+
+}
+
+@media (max-width:768px) {
+    .profile{
+        text-align: center;
+    }
+
+}
+
+/*skill*/
+
+.skills{
+    display: grid;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    margin-top: 50px;
+    color: black;
+}
+
+@media (max-width:768px) {
+    .skills{
+        margin: 50px auto 50px;
+    }
+}
+
+.skill-items{
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    grid-template-rows: 100px 100px 100px 100px;
+    gap: 50px;
+    margin-top: 50px;
+    padding: 20px auto;
+}
+
+@media (max-width:768px) {
+    .skill-items{
+        display: block;
+        margin-left: 30px;
+        padding: 0;
+    }
+}
+
+.skill-head{
+    height: 30px;
+    margin-left: 95px;
+}
+
+@media (max-width:768px) {
+.skill-head{
+    height: 30px;
+    margin-left: 0px;
+    text-align:center;
+}
+}
+
+
+.skill-item{
+    list-style: none;
+    text-align: center;
+    width: 120px;
+    padding: 0 5px;
+    margin: 10px auto 0;
+}
+
+@media (max-width:768px) {
+    .skill-item{
+        list-style: none;
+        text-align: left;
+    }
+}
+
+.skill-name{
+    font-size: 30px;
+    text-align: left;
+}
+
+.level{
+    height: 30px;
+}
+
+@media (max-width:768px) {
+    .level{
+        margin-left: 0px;
+    }
+}
+/*星マーク*/
+
+/*HTML*/
+.child-level1{
+    position: relative;
+}
+
+.child-level1::before{
+    position: absolute;
+    display: inline-block;
+    color: gray;
+    white-space: nowrap;
+    top: 0;
+    left: 0;
+    line-height: 1em;
+    content: "★★★★★";
+}
+
+
+.child-level1::after{
+    position: absolute;
+    display: inline-block;
+    color: orange;
+    white-space: nowrap;
+    top: 0;
+    left: 0;
+    line-height: 1em;
+    overflow: hidden;
+    content: "★★★★";
+}
+
+/*CSS*/
+.child-level2{
+    position: relative;
+}
+
+.child-level2::before{
+    position: absolute;
+    display: inline-block;
+    color: gray;
+    white-space: nowrap;
+    top: 0;
+    left: 0;
+    line-height: 1em;
+    content: "★★★★★";
+}
+
+
+.child-level2::after{
+    position: absolute;
+    display: inline-block;
+    color: orange;
+    white-space: nowrap;
+    top: 0;
+    left: 0;
+    line-height: 1em;
+    overflow: hidden;
+    content: "★★★★";
+}
+
+/*jQuery*/
+.child-level3{
+    position: relative;
+}
+
+.child-level3::before{
+    position: absolute;
+    display: inline-block;
+    color: gray;
+    white-space: nowrap;
+    top: 0;
+    left: 0;
+    line-height: 1em;
+    content: "★★★★★";
+}
+
+
+.child-level3::after{
+    position: absolute;
+    display: inline-block;
+    color: orange;
+    white-space: nowrap;
+    top: 0;
+    left: 0;
+    line-height: 1em;
+    overflow: hidden;
+    content: "★★★★";
+}
+
+/*javascript*/
+.child-level4{
+    position: relative;
+}
+
+.child-level4::before{
+    position: absolute;
+    display: inline-block;
+    color: gray;
+    white-space: nowrap;
+    top: 0;
+    left: 0;
+    line-height: 1em;
+    content: "★★★★★";
+}
+
+
+.child-level4::after{
+    position: absolute;
+    display: inline-block;
+    color: orange;
+    white-space: nowrap;
+    top: 0;
+    left: 0;
+    line-height: 1em;
+    overflow: hidden;
+    content: "★★★";
+}
+
+/*PHP*/
+.child-level5{
+    position: relative;
+}
+
+.child-level5::before{
+    position: absolute;
+    display: inline-block;
+    color: gray;
+    white-space: nowrap;
+    top: 0;
+    left: 0;
+    line-height: 1em;
+    content: "★★★★★";
+}
+
+
+.child-level5::after{
+    position: absolute;
+    display: inline-block;
+    color: orange;
+    white-space: nowrap;
+    top: 0;
+    left: 0;
+    line-height: 1em;
+    overflow: hidden;
+    content: "★★★";
+}
+
+/*Wordpress*/
+.child-level6{
+    position: relative;
+}
+
+.child-level6::before{
+    position: absolute;
+    display: inline-block;
+    color: gray;
+    white-space: nowrap;
+    top: 0;
+    left: 0;
+    line-height: 1em;
+    content: "★★★★★";
+}
+
+
+.child-level6::after{
+    position: absolute;
+    display: inline-block;
+    color: orange;
+    white-space: nowrap;
+    top: 0;
+    left: 0;
+    line-height: 1em;
+    overflow: hidden;
+    content: "★★★";
+}
+
+/*Photoshop*/
+.child-level7{
+    position: relative;
+}
+
+.child-level7::before{
+    position: absolute;
+    display: inline-block;
+    color: gray;
+    white-space: nowrap;
+    top: 0;
+    left: 0;
+    line-height: 1em;
+    content: "★★★★★";
+}
+
+
+.child-level7::after{
+    position: absolute;
+    display: inline-block;
+    color: orange;
+    white-space: nowrap;
+    top: 0;
+    left: 0;
+    line-height: 1em;
+    overflow: hidden;
+    content: "★★★";
+}
+
+/*Illustrator*/
+.child-level8{
+    position: relative;
+}
+
+.child-level8::before{
+    position: absolute;
+    display: inline-block;
+    color: gray;
+    white-space: nowrap;
+    top: 0;
+    left: 0;
+    line-height: 1em;
+    content: "★★★★★";
+}
+
+
+.child-level8::after{
+    position: absolute;
+    display: inline-block;
+    color: orange;
+    white-space: nowrap;
+    top: 0;
+    left: 0;
+    line-height: 1em;
+    overflow: hidden;
+    content: "★★★";
+}
+
+/*history*/
+
+#history{
+    display: grid;
+    justify-content: center;
+    padding:0 100px 500px 0;
+}
+
+@media (max-width:768px) {
+    #history{
+        padding: 0 0 500px;
+    }
+}
+
+
+.myhistory,#history p {
+    height: 30px;
+}
+
+
+@media (max-width:768px) {
+    .myhistory,#history p {
+        height: 30px;
+        margin-left: 0;
+        text-align: center;
+    }
+}
+
+
+/*タイムライン全体の設定*/
+.timeline{
+    max-width: 400px;
+    width:100%;
+    margin:50px auto;
+    padding:0 30px;
+  }
+
+.timeline li{
+/*線の起点とするためrelativeを設定*/
+    position: relative;
+    list-style: none;
+    padding:0 0 20px 0;
+  }
+
+.timeline dl{
+    margin:0 0 20px 3em;
+  }
+
+.timeline dd {
+    display: block;
+    margin-left: 0;
+    padding:10px 0;
+  }
+
+/*絶対配置で線を設定*/
+.border-line {
+/*線の位置*/
+    position: absolute;
+    left:0.2em;
+    top:0;
+    width:2px;/*線の太さ*/
+    height:0;/*はじめは高さを0に*/
+    background: lightseagreen;
+}
+
+/*タイムラインの見出し横の丸の位置と形状*/
+.timeline li::after{
+    content:'';
+    position: absolute;
+    top:0;
+    left:0;
+    width:10px;
+    height: 10px;
+    background:lightseagreen;
+    border-radius: 50%;
+  }
+
+
+
+/*================================================================================
+	aboutページフッター部（#footer）
+================================================================================*/
+
+
+#footer{
+left: 0;
+right: 0;
+width: 100%;
+height: 30px;
+text-align: center;
+font-size: 12px;
+}
+
+
+#footer p{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 0%;
+    color: black;
+    text-align: center;
+}
+
+/* go-to-top */
+
+#page-top{
+    width: 90px;
+    height: 90px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    opacity: 0.6;
+  }
+  #page-top a{
+    position: relative;
+    display: block;
+    width: 90px;
+    height: 90px;
+    text-decoration: none;
+  }
+  #page-top a::before{
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: '\f102';
+    font-size: 25px;
+    color: lightseagreen;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: -40px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+  }
+  #page-top a::after{
+    content: 'PAGE TOP';
+    font-size: 13px;
+    color: #fff;
+    position: absolute;
+    top: 45px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+    color: lightseagreen;
+  }
+
+
+
+
+/*================================================================================
+	workページ全体（#container）
+================================================================================*/
+#work-container{
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    height: auto;
+}
+
+
+/*================================================================================
+	workページヘッダー（#header）
+================================================================================*/
+
+
+#header{
+    display: flex;
+    width: 100%;
+}
+
+.header-inner{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: calc(100vw - 30px);
+    height: 100%;
+    margin: 0 auto;
+}
+
+.header-sitetitle{
+    margin-left: 20px;
+    padding-top: 20px;
+    height: 60px;
+}
+
+@media (max-width:768px) {
+    .header-sitetitle{
+        font-size: 20px;
+        margin-top: 20px;
+    }
+}
+
+#header h1 a{
+text-decoration: none;
+color: black;
+}
+
+#header nav{
+    margin-top:20px;
+    margin-right: 50px;
+    font-size: 20px;
+}
+
+#header nav a{
+    text-decoration: none;
+    color: black;
+    }
+
+#header nav ul{
+    list-style: none;
+    margin-top: 30px;
+    padding: 0;
+}
+
+
+
+/*================================================================================
+	workページメインコンテンツ部（#main）
+================================================================================*/
+
+
+#work-content{
+    display: flex;
+    width: auto;
+}
+
+
+#work-main{
+    width: 100%;
+    height: auto;
+    margin: 100px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.list-title{
+    color: cornflowerblue;
+    margin-bottom: 10px;
+}
+
+#work-main p{
+    font-size: 0.5rem;
+}
+
+#work-main p{
+    color: gray;
+}
+
+
+.work-list dl{
+    display: inline-block;
+    margin-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    text-align: center;
+
+}
+
+.work-list dt img{
+    width: 200px;
+    height: auto;
+    transition: 0.5s;
+    box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
+}
+
+.work-list dt img:hover{
+    transform: scale(0.9, 0.9);
+    box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
+}
+
+.work-list dd{
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.work-list dd a{
+    color: black;
+    text-decoration: none;
+}
+
+/*a要素アニメーション*/
+
+/*　マウスカーソルを乗せたら文字色変わる・下線が引かれる*/
+    .work-list dd a{
+        margin-bottom: 10px;
+        list-style: none;
+    }
+
+
+    .work-list dd a{
+        position: relative;
+        display: inline-block;
+        list-style: none;
+        text-decoration: none;
+        transition: all .3s;
+      }
+
+    .work-list dd a:hover{
+        color: lightseagreen;
+        text-decoration: underline;
+      }
+
+/*================================================================================
+	workページサイドバー部（#side）
+================================================================================*/
+
+#work-side{
+    margin-top: 100px;
+    margin-right: 25px;
+    margin-left: auto;
+}
+
+.category{
+    margin-bottom: 100px;
+    color: cornflowerblue;
+}
+
+.refarence h2{
+    color: cornflowerblue;
+    text-decoration: none;
+}
+
+
+.side-list li{
+    margin-bottom: 20px;
+    list-style: none;
+
+}
+
+.side-list li a{
+    text-decoration: none;
+}
+
+
+/*サイドバーアニメーション*/
+
+/*アニメーション*/
+.side-list li a{
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+  }
+
+  .side-list li a::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    content: '';
+    width: 0;
+    height: 0.1rem;
+    color: white;
+    transition: .3s;
+  }
+
+  .side-list li a:hover::after {
+    width: 100%;
+  }
+
+
+/*　a要素アニメーション（アフター）*/
+    .side-list li a{
+        margin-bottom: 10px;
+        list-style: none;
+    }
+
+
+    .side-list li a{
+        position: relative;
+        display: inline-block;
+        list-style: none;
+        text-decoration: none;
+        transition: all .3s;
+      }
+
+    .side-list li a:hover{
+        color: lightseagreen;
+        text-decoration: underline;
+      }
+
+
+
+/*================================================================================
+	workページフッター部（#footer）
+================================================================================*/
+/*
+#footer{
+    position: relative;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    font-size: 12px;
+    }
+
+
+    #footer p{
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+        padding-bottom: 0%;
+        color: black;
+        text-align: center;
+    }
+
+/* go-to-top */
+
+#page-top{
+    width: 90px;
+    height: 90px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    opacity: 0.6;
+  }
+  #page-top a{
+    position: relative;
+    display: block;
+    width: 90px;
+    height: 90px;
+    text-decoration: none;
+  }
+  #page-top a::before{
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: '\f102';
+    font-size: 25px;
+    color: lightseagreen;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: -40px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+  }
+  #page-top a::after{
+    content: 'PAGE TOP';
+    font-size: 13px;
+    color: #fff;
+    position: absolute;
+    top: 45px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+    color: lightseagreen;
+  }
+/*================================================================================
+	contactページ全体（#container）
+================================================================================*/
+
+
+
+
+
+/*================================================================================
+	contactページヘッダー部（#header）
+================================================================================*/
+#header{
+    display: flex;
+    width: 100%;
+}
+
+.header-inner{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: calc(100vw - 30px);
+    height: 100%;
+    margin: 0 auto;
+}
+
+#header h1 a{
+    text-decoration: none;
+    color: black;
+    }
+
+    #header nav{
+        margin-top:20px;
+        margin-right: 50px;
+        font-size: 20px;
+    }
+
+    #header nav a{
+        text-decoration: none;
+        color: black;
+        }
+
+    #header nav ul{
+
+        list-style: none;
+        margin-top: 30px;
+        padding: 0;
+    }
+
+.header-sitetitle{
+    margin-left: 20px;
+    padding-top: 20px;
+    height: 60px;
+}
+
+@media (max-width:768px) {
+    .header-sitetitle{
+        font-size: 20px;
+        margin-top: 20px;
+    }
+}
+
+
+/*ハンバーガーメニュー*/
+@media (max-width:768px) {
+
+
+    /*三本線が奥行きをもって回転して×に*/
+    /*ボタン外側*/
+    /*========= ナビゲーションのためのCSS ===============*/
+
+    #header-nav{
+        /*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+        position:fixed;
+        z-index: 999;
+        /*ナビのスタート位置と形状*/
+        top:-120%;
+        left:0;
+        width:100%;
+        height: 100vh;/*ナビの高さ*/
+        background:white;
+        opacity: 0.9;
+        /*動き*/
+        transition: all 0.6s;
+
+    }
+
+    /*アクティブクラスがついたら位置を0に*/
+    #header-nav.panelactive{
+        top: 0;
+    }
+
+    /*ナビゲーションの縦スクロール*/
+    #header-nav.panelactive #header-nav-list{
+        /*ナビの数が増えた場合縦スクロール*/
+        position: fixed;
+        z-index: 999;
+        width: 100%;
+        height: 100vh;/*表示する高さ*/
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /*ナビゲーション*/
+    #header-nav ul {
+        /*ナビゲーション天地中央揃え*/
+        position: absolute;
+        z-index: 999;
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+    }
+
+    /*リストのレイアウト設定*/
+
+    #header-nav ul{
+        list-style: none;
+        text-align: center;
+    }
+
+    #header-nav ul a{
+        color:black;
+        text-decoration: none;
+        padding:10px;
+        display: block;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: bold;
+    }
+
+    #header-nav ul a:hover{
+        color:lightseagreen;
+    }
+
+    /*========= ボタンのためのCSS ===============*/
+    .openbtn1{
+        position:fixed;
+        z-index: 9999;/*ボタンを最前面に*/
+        top:10px;
+        right: 10px;
+        cursor: pointer;
+        width: 50px;
+        height:50px;
+        margin-top: 30px;
+        margin-right: 30px;
+        background:lightseagreen;
+        border-radius: 5px;
+    }
+
+    /*×に変化*/
+    .openbtn1 span{
+        display: inline-block;
+        transition: all .4s;
+        position: absolute;
+        left: 14px;
+        height: 3px;
+        border-radius: 2px;
+        background-color: white;
+          width: 45%;
+      }
+
+    .openbtn1 span:nth-of-type(1) {
+        top:15px;
+    }
+
+    .openbtn1 span:nth-of-type(2) {
+        top:23px;
+    }
+
+    .openbtn1 span:nth-of-type(3) {
+        top:31px;
+    }
+
+    .openbtn1.active span:nth-of-type(1) {
+        top: 18px;
+        left: 18px;
+        transform: translateY(6px) rotate(-45deg);
+        width: 30%;
+    }
+}
+
+
+
+/*================================================================================
+	contactページメインコンテンツ部（#main）
+================================================================================*/
+
+.contact-main {
+    width: auto;/*横幅*/
+    margin: 0 auto;/*中央寄せ*/
+    padding: 60px 0;
+  }
+
+.forms{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-ttl{
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+.contact-table {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+.contact-item,
+.contact-body {
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+.contact-item {
+    text-align: left;
+    width: 30%;
+    background-color: #eee;
+}
+
+.contact-body {
+    width: 70%;
+}
+
+.form-text {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    max-width: 400px;
+}
+
+.contact-sex + .contact-sex {
+    margin-left: 10px;
+}
+
+.contact-sex-txt {
+    margin-left: 5px;
+}
+
+.form-select {
+    width: 180px;
+    height: 40px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.form-textarea {
+    width: 90%;
+    padding: 10px;
+    height: 200px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.contact-submit {
+    width: 250px;
+    background-color: #333;
+    color: #fff;
+    font-weight: bold;
+    display: block;
+    margin: 0 auto;
+    font-size: 16px;
+    padding: 15px;
+    border-radius: 100vh;
+    border: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+  }
+
+
+/*================================================================================
+	contactページフッター部（#footer）
+================================================================================*/
+
+/* go-to-top */
+#page-top{
+    width: 90px;
+    height: 90px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    opacity: 0.6;
+  }
+  #page-top a{
+    position: relative;
+    display: block;
+    width: 90px;
+    height: 90px;
+    text-decoration: none;
+  }
+  #page-top a::before{
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: '\f102';
+    font-size: 25px;
+    color: lightseagreen;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: -40px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+  }
+  #page-top a::after{
+    content: 'PAGE TOP';
+    font-size: 13px;
+    color: #fff;
+    position: absolute;
+    top: 45px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+    color: lightseagreen;
+  }
